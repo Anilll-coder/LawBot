@@ -58,14 +58,8 @@ export default function Signup() {
   };
 
   return (
-    <main className="flex-1 flex items-center justify-center bg-gray-50/50 py-16 px-4 relative overflow-hidden font-sans">
-      {/* Background Gradients */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-100/60 rounded-full blur-[120px] opacity-70"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[45%] h-[45%] bg-indigo-100/50 rounded-full blur-[130px] opacity-60"></div>
-      </div>
-
-      <div className="w-full max-w-md bg-white/90 backdrop-blur-xl border border-gray-100 rounded-3xl shadow-2xl p-8 lg:p-10 relative z-10 overflow-hidden">
+    <main className="flex-1 flex items-center justify-center bg-gray-50 py-16 px-4 font-sans">
+      <div className="w-full max-w-md bg-white border border-gray-200 rounded-2xl shadow-sm p-8 lg:p-10 overflow-hidden">
         {/* Top Accent Bar */}
         <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 to-indigo-600"></div>
 

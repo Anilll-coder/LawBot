@@ -100,14 +100,8 @@ export default function ContactLawyerPage() {
   });
 
   return (
-    <main className="flex-1 font-sans text-gray-900 bg-gray-50/50 relative overflow-hidden">
-      {/* Background Gradients */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] bg-blue-100/50 rounded-full blur-[130px] opacity-70"></div>
-        <div className="absolute top-[30%] right-[-10%] w-[40%] h-[40%] bg-indigo-100/40 rounded-full blur-[120px] opacity-60"></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 py-12 lg:py-16 relative z-10 space-y-10">
+    <main className="flex-1 font-sans text-gray-900 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6 py-12 lg:py-16 space-y-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center space-x-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 text-xs font-semibold text-blue-700 shadow-sm">

@@ -74,14 +74,8 @@ export default function LawyerDashboard() {
   const pastResponses = mergedRequests.filter((r) => r.status !== "pending");
 
   return (
-    <main className="flex-1 font-sans text-gray-900 bg-gray-50/50 relative overflow-hidden">
-      {/* Background Gradients */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] bg-blue-100/50 rounded-full blur-[130px] opacity-70"></div>
-        <div className="absolute top-[30%] right-[-10%] w-[40%] h-[40%] bg-indigo-100/40 rounded-full blur-[120px] opacity-60"></div>
-      </div>
-
-      <div className="max-w-5xl mx-auto px-6 py-12 lg:py-16 relative z-10 space-y-10">
+    <main className="flex-1 font-sans text-gray-900 bg-gray-50">
+      <div className="max-w-5xl mx-auto px-6 py-12 lg:py-16 space-y-10">
         {/* Header */}
         <div className="bg-white/80 backdrop-blur-xl rounded-3xl border border-gray-100 shadow-xl p-8 lg:p-10 relative overflow-hidden text-center space-y-3">
           <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 to-indigo-600"></div>

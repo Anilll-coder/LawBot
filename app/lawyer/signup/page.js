@@ -71,14 +71,8 @@ export default function LawyerSignupForm() {
   };
 
   return (
-    <main className="flex-1 font-sans text-gray-900 bg-gray-50/50 py-12 px-4 relative overflow-hidden">
-      {/* Background Gradients */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] bg-blue-100/50 rounded-full blur-[130px] opacity-70"></div>
-        <div className="absolute top-[40%] right-[-10%] w-[40%] h-[40%] bg-indigo-100/40 rounded-full blur-[120px] opacity-60"></div>
-      </div>
-
-      <div className="max-w-4xl mx-auto relative z-10 space-y-8">
+    <main className="flex-1 font-sans text-gray-900 bg-gray-50 py-12 px-4">
+      <div className="max-w-4xl mx-auto space-y-8">
         {/* Header */}
         <div className="text-center space-y-3">
           <div className="inline-flex items-center space-x-2 bg-indigo-50 border border-indigo-100 rounded-full px-4 py-1.5 text-xs font-semibold text-indigo-700 shadow-sm">
