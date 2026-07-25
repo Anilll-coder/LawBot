@@ -16,7 +16,7 @@ export async function POST(req) {
     return NextResponse.json({ error: "Password must be at least 6 characters long" }, { status: 400 });
   }
 
-  const client = await clientPromise;
+  const client = await clientPromise();
   const db = client.db();
 
   const existingUser = await db.collection("users").findOne({ email: cleanEmail });

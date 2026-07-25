@@ -10,7 +10,7 @@ export async function POST(req) {
       return NextResponse.json({ error: "Missing lawEmail" }, { status: 400 });
     }
 
-    const client = await clientPromise;
+    const client = await clientPromise();
     const db = client.db();
 
     // Fetch all chat requests for this lawyer

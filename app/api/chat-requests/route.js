@@ -11,7 +11,7 @@ export async function POST(request) {
       return NextResponse.json({ message: "Missing lawyerId" }, { status: 400 });
     }
 
-    const client = await clientPromise;
+    const client = await clientPromise();
     const db = client.db();
     const laweyr = await db.collection("lawyers").findOne({_id:new ObjectId(lawyerId)})
     const lawEmail = laweyr.email;

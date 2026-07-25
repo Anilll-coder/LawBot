@@ -8,45 +8,34 @@ export default function Home() {
   const role = session?.user?.role;
 
   return (
-    <main className="flex flex-col min-h-screen font-sans text-gray-900 bg-gray-50 selection:bg-blue-200 selection:text-blue-900 overflow-x-hidden">
+    <main className="flex flex-col min-h-screen font-sans text-gray-900 bg-gray-50">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
-        {/* Background Gradients */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-100 rounded-full blur-[100px] opacity-70"></div>
-          <div className="absolute top-[20%] right-[-10%] w-[50%] h-[50%] bg-indigo-50 rounded-full blur-[120px] opacity-80"></div>
-          <div className="absolute bottom-[-10%] left-[20%] w-[60%] h-[60%] bg-blue-50 rounded-full blur-[100px] opacity-60"></div>
-        </div>
-
-        <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
-          <div className="inline-flex items-center space-x-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 mb-8 text-sm font-medium text-blue-700 shadow-sm">
-            <span className="flex h-2 w-2 bg-blue-600 rounded-full animate-pulse"></span>
-            <span>AI Legal Assistant is Live</span>
+      <section className="py-16 md:py-24 bg-white border-b border-gray-200">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <div className="inline-flex items-center space-x-2 bg-blue-50 border border-blue-100 rounded-full px-3.5 py-1 mb-6 text-xs font-semibold text-blue-700">
+            <span>AI-Powered Legal Companion</span>
           </div>
           
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-[1.1] mb-6 text-gray-900 tracking-tight">
-            Legal knowledge, <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-              simplified for you.
-            </span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-6 tracking-tight">
+            Legal knowledge, simplified for you.
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Get instant legal insights, decode complex jargon, and find answers to your questions with our advanced AI-powered assistant.
+          <p className="text-base sm:text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Get instant legal insights, decode complex jargon, and find answers to your questions with our AI-powered assistant.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               href="/chat-bot"
-              className="w-full sm:w-auto inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 group"
+              className="w-full sm:w-auto inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg shadow-sm transition-colors group text-sm"
             >
-              Start Chatting Free
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              Start AI Chat Free
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </Link>
             {!session && (
               <Link
                 href="/login"
-                className="w-full sm:w-auto inline-flex items-center justify-center bg-white border border-gray-200 text-gray-700 font-semibold px-8 py-4 rounded-xl shadow-sm hover:bg-gray-50 hover:border-gray-300 transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center bg-white border border-gray-300 text-gray-700 font-medium px-6 py-3 rounded-lg shadow-sm hover:bg-gray-50 transition-colors text-sm"
               >
                 Sign In
               </Link>
@@ -55,27 +44,25 @@ export default function Home() {
 
           {/* Conditional Lawyer Section */}
           {role !== "lawyer" ? (
-            <div className="mt-20 bg-white/60 backdrop-blur-lg border border-white/80 rounded-3xl shadow-xl p-8 md:p-10 max-w-3xl mx-auto text-center relative overflow-hidden">
-              <div className="absolute -right-10 -top-10 bg-blue-50 w-40 h-40 rounded-full blur-3xl -z-10"></div>
-              <Briefcase size={32} className="mx-auto mb-4 text-indigo-600" />
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Are you a legal professional?</h3>
-              <p className="text-gray-600 mb-6">Join the LawBot network and connect with clients seeking expert legal advice.</p>
+            <div className="mt-14 bg-gray-50 border border-gray-200 rounded-2xl p-6 sm:p-8 max-w-2xl mx-auto text-center">
+              <Briefcase size={28} className="mx-auto mb-3 text-blue-600" />
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Are you a legal professional?</h3>
+              <p className="text-sm text-gray-600 mb-5">Join the LawBot network and connect with clients seeking expert legal advice.</p>
               <Link
                 href="/lawyer/signup"
-                className="inline-block bg-gray-900 hover:bg-gray-800 text-white font-medium px-6 py-2.5 rounded-lg shadow-md transition-all hover:-translate-y-0.5"
+                className="inline-block bg-gray-900 hover:bg-gray-800 text-white font-medium px-5 py-2.5 rounded-lg text-sm transition-colors"
               >
                 Create Lawyer Profile
               </Link>
             </div>
           ) : (
-            <div className="mt-20 bg-white/60 backdrop-blur-lg border border-white/80 rounded-3xl shadow-xl p-8 md:p-10 max-w-3xl mx-auto text-center relative overflow-hidden">
-               <div className="absolute -left-10 -bottom-10 bg-green-50 w-40 h-40 rounded-full blur-3xl -z-10"></div>
-              <Briefcase size={32} className="mx-auto mb-4 text-green-600" />
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Welcome back, Counselor</h3>
-              <p className="text-gray-600 mb-6">Access your dashboard to manage client queries and appointments.</p>
+            <div className="mt-14 bg-green-50/60 border border-green-200 rounded-2xl p-6 sm:p-8 max-w-2xl mx-auto text-center">
+              <Briefcase size={28} className="mx-auto mb-3 text-green-700" />
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Welcome back, Counselor</h3>
+              <p className="text-sm text-gray-600 mb-5">Access your dashboard to manage client queries and appointments.</p>
               <Link
                 href="/dashboard/lawyer"
-                className="inline-block bg-green-600 hover:bg-green-700 text-white font-medium px-6 py-2.5 rounded-lg shadow-md transition-all hover:-translate-y-0.5"
+                className="inline-block bg-green-700 hover:bg-green-800 text-white font-medium px-5 py-2.5 rounded-lg text-sm transition-colors"
               >
                 Go to Dashboard
               </Link>
@@ -85,34 +72,34 @@ export default function Home() {
       </section>
 
       {/* Features */}
-      <section className="py-24 bg-gray-50 border-t border-gray-100 relative">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Why choose LawBot?</h2>
-          <p className="text-gray-500 max-w-2xl mx-auto mb-16 text-lg">Experience the next generation of legal assistance, combining AI speed with reliable insights.</p>
+      <section className="py-16 md:py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3 text-gray-900">Why choose LawBot?</h2>
+          <p className="text-gray-600 max-w-xl mx-auto mb-12 text-sm sm:text-base">Reliable AI assistance designed for clear, accessible legal guidance.</p>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-8 bg-white rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-              <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                 <Gavel size={32} />
+          <div className="grid md:grid-cols-3 gap-6 text-left">
+            <div className="p-6 bg-white rounded-xl border border-gray-200 shadow-sm">
+              <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4">
+                 <Gavel size={24} />
               </div>
-              <h4 className="text-xl font-bold mb-3 text-gray-900">Decode Jargon</h4>
-              <p className="text-gray-600 leading-relaxed">Break down complicated legal documents and terminology into simple, plain English everyone can understand.</p>
+              <h4 className="text-lg font-bold mb-2 text-gray-900">Decode Jargon</h4>
+              <p className="text-sm text-gray-600 leading-relaxed">Break down complicated legal documents and terminology into simple, plain English everyone can understand.</p>
             </div>
             
-            <div className="p-8 bg-white rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-              <div className="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                 <ShieldCheck size={32} />
+            <div className="p-6 bg-white rounded-xl border border-gray-200 shadow-sm">
+              <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4">
+                 <ShieldCheck size={24} />
               </div>
-              <h4 className="text-xl font-bold mb-3 text-gray-900">Total Privacy</h4>
-              <p className="text-gray-600 leading-relaxed">Your privacy is guaranteed. All chats are strictly confidential, encrypted, and never permanently stored.</p>
+              <h4 className="text-lg font-bold mb-2 text-gray-900">Total Privacy</h4>
+              <p className="text-sm text-gray-600 leading-relaxed">Your privacy is guaranteed. All chats are strictly confidential, encrypted, and never permanently stored.</p>
             </div>
             
-            <div className="p-8 bg-white rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-               <div className="w-16 h-16 bg-sky-50 text-sky-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-sky-600 group-hover:text-white transition-colors">
-                 <MessageCircle size={32} />
+            <div className="p-6 bg-white rounded-xl border border-gray-200 shadow-sm">
+               <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4">
+                 <MessageCircle size={24} />
               </div>
-              <h4 className="text-xl font-bold mb-3 text-gray-900">24/7 Availability</h4>
-              <p className="text-gray-600 leading-relaxed">Legal emergencies don't wait for business hours. Get instant answers anytime, anywhere, on any device.</p>
+              <h4 className="text-lg font-bold mb-2 text-gray-900">24/7 Availability</h4>
+              <p className="text-sm text-gray-600 leading-relaxed">Legal emergencies don't wait for business hours. Get instant answers anytime, anywhere, on any device.</p>
             </div>
           </div>
         </div>
@@ -120,23 +107,20 @@ export default function Home() {
 
       {/* Contact Lawyer CTA Section */}
       {role !== "lawyer" && (
-        <section className="py-24 bg-white relative overflow-hidden">
-           <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02] mix-blend-overlay"></div>
-          <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900 tracking-tight">
-              Need personalized counsel?
+        <section className="py-16 bg-white border-t border-b border-gray-200">
+          <div className="max-w-3xl mx-auto px-6 text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-900">
+              Need personalized legal counsel?
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 mb-10">
+            <p className="text-base text-gray-600 mb-8 max-w-xl mx-auto">
               {session
-                ? "You're logged in. Connect directly with verified, specialized lawyers through our secure messaging platform."
-                : "Log in to connect directly with verified, specialized lawyers for professional legal support."}
+                ? "Connect directly with verified, specialized lawyers through our secure platform."
+                : "Sign in to connect directly with verified, specialized lawyers for professional support."}
             </p>
 
             <Link
               href={session ? "/lawyer/contact" : "/login"}
-              className={`inline-flex items-center justify-center px-8 py-4 rounded-xl text-white font-semibold shadow-xl transition-all hover:-translate-y-0.5 hover:shadow-2xl ${
-                session ? "bg-gradient-to-r from-emerald-500 to-green-600" : "bg-gradient-to-r from-gray-900 to-gray-800"
-              }`}
+              className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-gray-900 hover:bg-gray-800 text-white font-medium text-sm transition-colors shadow-sm"
             >
               {session ? "Browse Lawyers Now" : "Sign in to Connect"}
             </Link>
@@ -145,14 +129,14 @@ export default function Home() {
       )}
 
       {/* FAQ Section */}
-      <section className="bg-gray-50 py-24 border-t border-gray-100">
+      <section className="bg-gray-50 py-16">
         <div className="max-w-3xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-            <p className="text-gray-500">Everything you need to know about LawBot.</p>
+          <div className="text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h2>
+            <p className="text-sm text-gray-600">Everything you need to know about LawBot.</p>
           </div>
           
-          <div className="space-y-4">
+          <div className="space-y-3">
             {[
               {
                 question: "Is LawBot a replacement for a human lawyer?",
@@ -171,24 +155,22 @@ export default function Home() {
                 answer: "LawBot is trained on a wide array of topics including contracts, employment law, family law, property disputes, and corporate compliance."
               }
             ].map((faq, index) => (
-              <details key={index} className="group bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow transition-shadow">
-                <summary className="flex justify-between items-center text-lg font-semibold text-gray-900 cursor-pointer p-6 list-none [&::-webkit-details-marker]:hidden">
+              <details key={index} className="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+                <summary className="flex justify-between items-center text-base font-semibold text-gray-900 cursor-pointer p-5 list-none [&::-webkit-details-marker]:hidden">
                   {faq.question}
-                  <span className="ml-6 flex-shrink-0 bg-gray-50 rounded-full p-2 group-open:bg-blue-50 group-open:text-blue-600 transition-colors">
-                    <ChevronDown className="w-5 h-5 group-open:rotate-180 transition-transform duration-300" />
+                  <span className="ml-4 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">
+                    <ChevronDown className="w-5 h-5" />
                   </span>
                 </summary>
-                <div className="px-6 pb-6 text-gray-600 text-base leading-relaxed">
-                  <div className="pt-2 border-t border-gray-50">
-                    {faq.answer}
-                  </div>
+                <div className="px-5 pb-5 text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-3">
+                  {faq.answer}
                 </div>
               </details>
             ))}
           </div>
         </div>
       </section>
-
     </main>
   );
 }
+

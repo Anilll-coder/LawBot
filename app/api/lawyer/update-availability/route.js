@@ -13,7 +13,7 @@ export async function POST(req) {
       );
     }
 
-    const client = await clientPromise;
+    const client = await clientPromise();
     const db = client.db();
     const lawyersCollection = db.collection("lawyers");
 

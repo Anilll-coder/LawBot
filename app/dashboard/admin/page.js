@@ -202,6 +202,7 @@ export default function AdminDashboard() {
               <p className="text-2xl font-extrabold text-gray-900">{pendingLawyers.length}</p>
               <p className="text-xs font-medium text-gray-500">Pending Lawyer Approvals</p>
             </div>
+
           </div>
 
           <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-6 shadow-sm border border-gray-100 flex items-center gap-4 border-l-4 border-l-emerald-500">

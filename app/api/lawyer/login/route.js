@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 export async function POST(req) {
   const { email, password } = await req.json();
 
-  const client = await clientPromise;
+  const client = await clientPromise();
   const db = client.db();
   const lawyersCollection = db.collection("lawyers");
 

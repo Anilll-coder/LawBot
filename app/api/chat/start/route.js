@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 export async function POST(req) {
   try {
     const { clientEmail,lawyerEmail } = await req.json();
-    const client = await clientPromise;
+    const client = await clientPromise();
     const db = client.db();
 
     // Check if chat already exists between client and lawyer

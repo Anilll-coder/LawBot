@@ -13,7 +13,7 @@ export async function POST(req) {
       return NextResponse.json({ message: "Missing requestId" }, { status: 400 });
     }
 
-    const client = await clientPromise;
+    const client = await clientPromise();
     const db = client.db();
 
     // 1. Insert the lawyer's response
@@ -46,7 +46,7 @@ export async function DELETE(req) {
       return NextResponse.json({ error: "Missing requestId or lawEmail" }, { status: 400 });
     }
 
-    const client = await clientPromise;
+    const client = await clientPromise();
     const db = client.db();
 
     const result = await db.collection("responses").deleteOne({

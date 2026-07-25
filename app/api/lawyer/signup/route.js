@@ -15,7 +15,7 @@ export async function POST(req) {
       return NextResponse.json({ message: 'Missing required fields' }, { status: 400 });
     }
 
-    const client = await clientPromise;
+    const client = await clientPromise();
     const db = client.db(); // default DB from your URI
     const lawyersCollection = db.collection('lawyers');
 

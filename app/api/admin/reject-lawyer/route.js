@@ -16,7 +16,7 @@ export async function POST(req) {
     return NextResponse.json({ success: false, message: "Invalid ID" }, { status: 400 });
   }
 
-  const client = await clientPromise;
+  const client = await clientPromise();
   const db = client.db();
 
   const result = await db.collection("lawyers").deleteOne({ _id: new ObjectId(id) });
