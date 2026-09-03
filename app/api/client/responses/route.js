@@ -8,7 +8,7 @@ export async function POST(req) {
     const { clientEmail } = await req.json();
     if (!clientEmail) return NextResponse.json({ error: "Missing email" }, { status: 400 });
 
-    const client = await clientPromise;
+    const client = await clientPromise();
     const db = client.db();
 
     const responses = await db.collection("responses").find({

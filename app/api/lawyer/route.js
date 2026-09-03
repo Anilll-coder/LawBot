@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req) {
   try {
-    const client = await clientPromise;
+    const client = await clientPromise();
     const db = client.db();
     const lawyersCollection = db.collection("lawyers");
 

@@ -12,7 +12,7 @@ export async function GET(request, { params }) {
       });
     }
 
-    const client = await clientPromise;
+    const client = await clientPromise();
     const db = client.db();
 
     const lawyer = await db

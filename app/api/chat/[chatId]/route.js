@@ -5,7 +5,7 @@ import clientPromise from "@/lib/mongodb";
 // GET: Fetch all messages for a chat
 export async function GET(_, { params }) {
   try {
-    const client = await clientPromise;
+    const client = await clientPromise();
     const db = client.db();
     const { chatId } = await params;
 
@@ -32,7 +32,7 @@ export async function POST(req, { params }) {
       return NextResponse.json({ error: "Missing sender or message" }, { status: 400 });
     }
 
-    const client = await clientPromise;
+    const client = await clientPromise();
     const db = client.db();
 
     await db.collection("messages").insertOne({
