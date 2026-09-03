@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { Send, Bot, User, MessageSquare, AlertCircle, RefreshCw, ShieldCheck } from "lucide-react";
+import { Send, Bot, User, MessageSquare, AlertCircle, RefreshCw, ShieldCheck, Sparkles } from "lucide-react";
 
 function formatTime(date) {
   if (!date) return "";
@@ -86,30 +86,45 @@ export default function Chat() {
   const chatLimitReached = !isLoggedIn && messages.filter((m) => m.sender === "user").length >= 5;
 
   return (
-    <main className="flex-1 font-sans text-gray-900 bg-gray-50 flex flex-col justify-center py-6 px-4 sm:px-6">
-      <div className="max-w-4xl mx-auto w-full flex-1 flex flex-col h-[82vh] bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
-        {/* Header Bar */}
-        <header className="px-6 py-4 border-b border-gray-200 bg-white flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="w-9 h-9 rounded-lg bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center">
-              <Bot className="w-5 h-5" />
-            </div>
-            <div>
-              <h1 className="text-base font-bold text-gray-900">LawBot AI Assistant</h1>
-              <p className="text-xs text-gray-500">24/7 AI Legal Companion</p>
-            </div>
+    <main className="flex-1 font-sans text-gray-900 bg-gray-50 flex flex-col py-8 sm:py-12 px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto w-full flex-1 flex flex-col space-y-6">
+        {/* Hero Header */}
+        <div className="text-center max-w-2xl mx-auto space-y-3">
+          <div className="inline-flex items-center space-x-2 bg-blue-50 border border-blue-100 rounded-full px-3.5 py-1 text-xs font-semibold text-blue-700">
+            <Sparkles className="w-4 h-4 text-blue-600" />
+            <span>AI-Powered Legal Companion</span>
           </div>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+            Chat with LawBot AI
+          </h1>
+          <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+            Ask any legal question in plain English and get instant, clear guidance.
+          </p>
+        </div>
 
-          <div className="hidden sm:flex items-center space-x-2">
-            <span className="bg-gray-100 text-gray-600 border border-gray-200 px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
-              Confidential & Encrypted
-            </span>
-          </div>
-        </header>
+        <div className="flex-1 flex flex-col h-[70vh] sm:h-[74vh] bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+          {/* Header Bar */}
+          <header className="px-6 py-4 border-b border-gray-200 bg-white flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="w-9 h-9 rounded-lg bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center">
+                <Bot className="w-5 h-5" />
+              </div>
+              <div>
+                <h2 className="text-base font-bold text-gray-900">LawBot AI Assistant</h2>
+                <p className="text-xs text-gray-500">24/7 AI Legal Companion</p>
+              </div>
+            </div>
 
-        {/* Chat Body */}
-        <main className="flex-1 p-6 overflow-y-auto space-y-4 bg-gray-50/50">
+            <div className="hidden sm:flex items-center space-x-2">
+              <span className="bg-gray-100 text-gray-600 border border-gray-200 px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
+                Confidential & Encrypted
+              </span>
+            </div>
+          </header>
+
+          {/* Chat Body */}
+          <main className="flex-1 p-6 overflow-y-auto space-y-4 bg-gray-50/50">
           {messages.length === 0 && (
             <div className="flex flex-col items-center justify-center h-full text-center py-10 space-y-6">
               <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center border border-blue-100">
@@ -237,6 +252,7 @@ export default function Chat() {
             )}
           </button>
         </form>
+        </div>
       </div>
     </main>
   );
