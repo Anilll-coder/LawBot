@@ -1,10 +1,5 @@
 import OpenAI from "openai";
 
-const openai = new OpenAI({
-  baseURL: "https://openrouter.ai/api/v1",
-  apiKey: process.env.OPENROUTER_API_KEY,
-});
-
 export async function POST(req) {
   try {
     const { message } = await req.json();
@@ -16,25 +11,36 @@ export async function POST(req) {
       );
     }
 
+    const apiKey = process.env.OPENROUTER_API_KEY;
+
+    if (!apiKey) {
+      console.error("OPENROUTER_API_KEY is missing");
+      return Response.json(
+        { error: "Server API key is not configured" },
+        { status: 500 }
+      );
+    }
+
+    const openai = new OpenAI({
+      baseURL: "https://openrouter.ai/api/v1",
+      apiKey,
+    });
+
     const completion = await openai.chat.completions.create({
       model: "openrouter/free",
-
       messages: [
         {
           role: "system",
           content: `
 You are a legal information assistant specializing in Indian law.
 
-Instructions:
 - Answer only the user's current question.
-- Do not rely on or respond to previous matters unless explicitly mentioned.
-- Base your answer on Indian jurisdiction.
-- Provide general legal information, not personalized legal advice.
-- Keep the answer brief, clear, and easy to understand.
-- Mention relevant Indian laws or sections when you are confident they apply.
-- Do not invent laws, sections, judgments, or legal procedures.
-- If the answer depends on specific facts, clearly mention that.
-- Do not unnecessarily repeat the user's question.
+- Base answers on Indian jurisdiction.
+- Give general legal information, not personalized legal advice.
+- Keep answers brief and clear.
+- Do not invent laws, sections, judgments, or procedures.
+- Mention relevant Indian laws or sections only when confident.
+- If the answer depends on specific facts, state that clearly.
           `.trim(),
         },
         {
@@ -46,21 +52,14 @@ Instructions:
 
     const reply = completion.choices?.[0]?.message?.content;
 
-    if (!reply) {
-      return Response.json(
-        { error: "No response generated" },
-        { status: 500 }
-      );
-    }
-
-    return Response.json({ reply });
+    return Response.json({
+      reply: reply || "Unable to generate a response.",
+    });
   } catch (error) {
     console.error("OpenRouter error:", error);
 
     return Response.json(
-      {
-        error: error?.message || "Internal Server Error",
-      },
+      { error: error?.message || "Internal Server Error" },
       { status: 500 }
     );
   }
