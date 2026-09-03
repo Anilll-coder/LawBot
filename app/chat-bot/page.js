@@ -17,12 +17,14 @@ export default function Chat() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [thinking, setThinking] = useState(false);
-  const messagesEndRef = useRef(null);
+  const chatBodyRef = useRef(null);
   const { data: session } = useSession();
   const isLoggedIn = Boolean(session);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const el = chatBodyRef.current;
+    if (!el) return;
+    el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
   }, [messages, thinking]);
 
   const quickPrompts = [
@@ -102,7 +104,7 @@ export default function Chat() {
           </p>
         </div>
 
-        <div className="flex-1 flex flex-col h-[70vh] sm:h-[74vh] bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+        <div className="flex flex-col h-[70vh] sm:h-[74vh] bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
           {/* Header Bar */}
           <header className="px-6 py-4 border-b border-gray-200 bg-white flex items-center justify-between">
             <div className="flex items-center space-x-3">
@@ -124,7 +126,7 @@ export default function Chat() {
           </header>
 
           {/* Chat Body */}
-          <main className="flex-1 p-6 overflow-y-auto space-y-4 bg-gray-50/50">
+          <section ref={chatBodyRef} className="flex-1 min-h-0 p-6 overflow-y-auto overflow-x-hidden overscroll-contain space-y-4 bg-gray-50/50">
           {messages.length === 0 && (
             <div className="flex flex-col items-center justify-center h-full text-center py-10 space-y-6">
               <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center border border-blue-100">
@@ -217,9 +219,7 @@ export default function Chat() {
               </Link>
             </div>
           )}
-
-          <div ref={messagesEndRef} />
-        </main>
+        </section>
 
         {/* Input Bar */}
         <form onSubmit={handleSubmit} className="p-4 border-t border-gray-200 bg-white flex items-center gap-3">
